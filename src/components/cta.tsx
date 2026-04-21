@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
+import { ApplyForm } from "./apply-form";
 
 const POINTS = [
   "定員15名・残席は公式にのみ反映",
@@ -44,26 +45,7 @@ export function CTA() {
           1日だけ予定を空けて、あなたの仕事道具をアップデートしませんか。
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a
-            href="mailto:hello@claude-code-class.example.com?subject=%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF%EF%BC%9AClaude%20Code%E6%95%99%E5%AE%A4%204%2F27"
-            className="group inline-flex items-center gap-2 h-13 px-8 rounded-full bg-primary hover:bg-primary-bright text-background font-semibold transition-all hover:shadow-[0_20px_60px_-10px_rgba(224,123,82,0.6)]"
-          >
-            席を確保する
-            <ArrowRight
-              size={18}
-              className="transition-transform group-hover:translate-x-0.5"
-            />
-          </a>
-          <a
-            href="#faq"
-            className="inline-flex items-center h-13 px-8 rounded-full border border-border hover:border-foreground/40 transition-colors"
-          >
-            質問してから決める
-          </a>
-        </div>
-
-        <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[13px] text-muted">
+        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[13px] text-muted">
           {POINTS.map((p) => (
             <li key={p} className="inline-flex items-center gap-2">
               <CheckCircle2 size={16} className="text-primary" />
@@ -71,6 +53,10 @@ export function CTA() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-12">
+          <ApplyForm />
+        </div>
       </motion.div>
     </section>
   );
