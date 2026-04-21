@@ -5,7 +5,7 @@ import { SectionHeading } from "./section-heading";
 
 const STEPS = [
   {
-    time: "13:00 — 13:40",
+    time: "19:00 — 19:25",
     chapter: "CHAPTER 01",
     title: "セットアップと「はじめての対話」",
     points: [
@@ -15,7 +15,7 @@ const STEPS = [
     ],
   },
   {
-    time: "13:50 — 15:00",
+    time: "19:30 — 20:00",
     chapter: "CHAPTER 02",
     title: "自分のPCで「実作業」をやってもらう",
     points: [
@@ -25,7 +25,7 @@ const STEPS = [
     ],
   },
   {
-    time: "15:15 — 16:30",
+    time: "20:05 — 20:35",
     chapter: "CHAPTER 03",
     title: "あなた専用の「仕事道具」にする",
     points: [
@@ -35,7 +35,7 @@ const STEPS = [
     ],
   },
   {
-    time: "16:45 — 18:00",
+    time: "20:40 — 21:00",
     chapter: "CHAPTER 04",
     title: "明日から使えるワークフローを持ち帰る",
     points: [
@@ -51,7 +51,7 @@ export function Curriculum() {
     <section id="curriculum" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          eyebrow="CURRICULUM / 5H"
+          eyebrow="CURRICULUM / 2H"
           title={
             <>
               その日のうちに、

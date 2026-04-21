@@ -19,7 +19,7 @@ const FACTS = [
     label: "開催日",
     value: "2026年 4月27日 (月)",
   },
-  { icon: <Clock size={18} />, label: "時間", value: "13:00 — 18:00 (5h)" },
+  { icon: <Clock size={18} />, label: "時間", value: "19:00 — 21:00 (2h)" },
   {
     icon: <MapPin size={18} />,
     label: "会場",
@@ -34,7 +34,7 @@ const FACTS = [
   {
     icon: <Wallet size={18} />,
     label: "参加費",
-    value: "¥29,800 (税込・教材費込)",
+    value: "¥9,900 先行割引 (通常 ¥29,800)",
   },
   {
     icon: <Coffee size={18} />,
@@ -145,20 +145,47 @@ export function EventDetails() {
               </ul>
 
               <div className="mt-8 pt-6 border-t border-border/60">
-                <div className="text-muted text-[11px] font-mono tracking-widest">
-                  PRICE
+                <div className="flex items-center justify-between gap-2">
+                  <div className="text-muted text-[11px] font-mono tracking-widest">
+                    PRICE
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary text-background px-2.5 py-1 text-[11px] font-bold tracking-wider">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-background/80 animate-pulse" />
+                    初回開催 67% OFF
+                  </span>
                 </div>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <span className="font-display font-black text-[40px] tracking-[-0.03em]">
-                    ¥29,800
+
+                <div className="mt-3 flex items-baseline gap-3 text-muted">
+                  <span className="text-[13px]">通常価格</span>
+                  <span className="relative font-display font-semibold text-[18px] tracking-[-0.02em]">
+                    <span className="line-through decoration-[1.5px]">
+                      ¥29,800
+                    </span>
+                  </span>
+                </div>
+
+                <div className="mt-1 flex items-baseline gap-2.5">
+                  <span className="font-display font-black text-[52px] md:text-[58px] leading-none tracking-[-0.04em] gradient-text">
+                    ¥9,900
                   </span>
                   <span className="text-muted text-[13px]">税込</span>
                 </div>
+
+                <div className="mt-3 flex items-center gap-2 text-[12.5px] text-foreground/70">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
+                  <span>
+                    <span className="text-foreground font-semibold">
+                      先着10名限定
+                    </span>
+                    の先行申込価格。定員に達し次第、通常価格に戻ります。
+                  </span>
+                </div>
+
                 <a
                   href="#apply"
-                  className="mt-5 inline-flex w-full justify-center items-center h-12 rounded-full bg-primary hover:bg-primary-bright text-background font-semibold transition-all"
+                  className="mt-6 inline-flex w-full justify-center items-center gap-2 h-12 rounded-full bg-primary hover:bg-primary-bright text-background font-semibold transition-all hover:shadow-[0_20px_60px_-10px_rgba(224,123,82,0.6)]"
                 >
-                  席を確保する
+                  この価格で席を確保する
                 </a>
               </div>
             </div>
