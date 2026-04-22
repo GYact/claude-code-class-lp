@@ -64,13 +64,9 @@ export function EventDetails() {
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
           eyebrow="EVENT DETAILS"
-          title={
-            <>
-              少人数なので、
-              <br className="hidden md:block" />
-              つまずいたところをその場で見られます。
-            </>
-          }
+          title="少人数なので、つまずいたところをその場で見られます。"
+          titleWidth="max-w-[18ch] md:max-w-[20ch]"
+          descriptionWidth="max-w-[60ch]"
           description={
             <>
               15名限定で、講師が全員の画面を見て回ります。オンライン動画のように置いていかれにくい形式です。
@@ -86,20 +82,20 @@ export function EventDetails() {
             transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
             className="navy-band rounded-[28px] border-2 border-primary/90 p-6 text-white shadow-[0_24px_48px_-40px_rgba(7,26,61,0.45)] md:p-8"
           >
-            <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6">
+            <div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-x-6 xl:gap-y-5">
               {FACTS.map((f) => (
                 <div
                   key={f.label}
-                  className="flex items-start gap-3 border-b border-white/12 py-3 last:border-0"
+                  className="rounded-2xl border border-white/12 bg-white/[0.03] p-4"
                 >
-                  <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/18 bg-white/6 text-accent">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/18 bg-white/6 text-accent">
                     {f.icon}
                   </span>
-                  <div>
+                  <div className="mt-3">
                     <dt className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/62">
                       {f.label}
                     </dt>
-                    <dd className="mt-1 text-[15.5px] font-semibold leading-snug text-white">
+                    <dd className="mt-2 max-w-[24ch] text-[15px] font-semibold leading-[1.7] text-white xl:max-w-none">
                       {f.value}
                     </dd>
                   </div>
@@ -130,7 +126,7 @@ export function EventDetails() {
               <h3 className="mt-2 font-display text-[24px] font-black tracking-[-0.03em] text-primary">
                 参加費に含まれるもの
               </h3>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-5 space-y-3.5">
                 {INCLUDES.map((it) => (
                   <li
                     key={it}
@@ -145,7 +141,7 @@ export function EventDetails() {
                 ))}
               </ul>
 
-              <div className="mt-8 border-t-2 border-primary/10 pt-6">
+              <div className="mt-9 border-t-2 border-primary/10 pt-7">
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-muted text-[11px] font-mono tracking-widest">
                     PRICE
@@ -156,7 +152,7 @@ export function EventDetails() {
                   </span>
                 </div>
 
-                <div className="mt-3 flex items-baseline gap-3 text-muted">
+                <div className="mt-4 flex items-baseline gap-3 text-muted">
                   <span className="text-[13px]">通常価格</span>
                   <span className="relative font-display font-semibold text-[18px] tracking-[-0.02em]">
                     <span className="line-through decoration-[1.5px]">
@@ -165,15 +161,15 @@ export function EventDetails() {
                   </span>
                 </div>
 
-                <div className="mt-1 flex items-baseline gap-2.5">
+                <div className="mt-2 flex items-baseline gap-2.5">
                   <span className="font-display text-[52px] font-black leading-none tracking-[-0.04em] text-danger md:text-[58px]">
                     {EVENT.price}
                   </span>
                   <span className="text-muted text-[13px]">税込</span>
                 </div>
 
-                <div className="mt-3 flex items-center gap-2 text-[12.5px] text-foreground/70">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-strong" />
+                <div className="mt-4 flex items-start gap-2 text-[12.5px] leading-[1.75] text-foreground/70">
+                  <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-strong" />
                   <span>{EVENT.earlyBirdNote}</span>
                 </div>
 

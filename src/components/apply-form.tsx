@@ -40,7 +40,7 @@ export function ApplyForm() {
   return (
     <form
       action={formAction}
-      className="mx-auto max-w-xl space-y-5 text-left text-primary"
+      className="mx-auto max-w-xl space-y-6 text-left text-primary"
       noValidate
     >
       <TextField
@@ -68,14 +68,14 @@ export function ApplyForm() {
       />
 
       <fieldset>
-        <legend className="block text-sm font-medium mb-2">
+        <legend className="mb-2.5 block text-sm font-medium">
           Claude Code 利用経験 <span className="text-primary">*</span>
         </legend>
-        <div className="grid sm:grid-cols-3 gap-2">
+        <div className="grid gap-3 sm:grid-cols-3">
           {EXPERIENCE_OPTIONS.map((o, i) => (
             <label
               key={o.value}
-              className="flex cursor-pointer items-center gap-2 rounded-xl border-2 border-border bg-background px-4 py-3 transition-colors hover:border-primary/40 has-[:checked]:border-danger has-[:checked]:bg-danger/6"
+              className="flex min-h-13 cursor-pointer items-center gap-2 rounded-xl border-2 border-border bg-background px-4 py-3.5 transition-colors hover:border-primary/40 has-[:checked]:border-danger has-[:checked]:bg-danger/6"
             >
               <input
                 type="radio"
@@ -141,7 +141,7 @@ export function ApplyForm() {
 
       <SubmitButton />
 
-      <p className="text-center text-xs leading-relaxed text-muted">
+      <p className="max-w-[44ch] text-center text-xs leading-relaxed text-muted">
         送信後3日以内にご案内メールをお送りします。参加費は当日現地にて¥9,900。5日前までキャンセル無料。
       </p>
     </form>
@@ -178,7 +178,7 @@ function TextField({
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 text-sm focus:border-danger focus:outline-none focus:ring-1 focus:ring-danger/25"
+        className="w-full rounded-xl border-2 border-border bg-background px-4 py-3.5 text-sm focus:border-danger focus:outline-none focus:ring-1 focus:ring-danger/25"
       />
       {error && <p className="mt-1.5 text-xs text-red-400">{error}</p>}
     </div>
