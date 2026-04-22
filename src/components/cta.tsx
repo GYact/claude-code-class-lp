@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { ApplyForm } from "./apply-form";
+import { EVENT } from "@/lib/event";
 
 const POINTS = [
-  "定員15名・残席は公式にのみ反映",
-  "お申し込み後3日以内にご案内を送付",
+  "定員15名",
+  "お申し込み後3日以内に詳細をご案内",
   "5日前までキャンセル無料",
 ];
 
@@ -19,7 +20,7 @@ export function CTA() {
       />
       <div
         aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] glow-orange pointer-events-none"
+        className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 glow-orange pointer-events-none"
       />
 
       <motion.div
@@ -27,22 +28,23 @@ export function CTA() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
-        className="relative mx-auto max-w-4xl px-5 md:px-8 text-center"
+        className="relative mx-auto max-w-4xl text-center px-5 md:px-8"
       >
-        <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-primary text-xs font-mono tracking-widest">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          2026.04.27 / 残り数席
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/14 bg-surface/86 px-3.5 py-1.5 text-xs font-mono tracking-widest text-primary">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          {EVENT.dateDot} / {EVENT.timeShort}
         </div>
 
-        <h2 className="mt-6 font-display font-black tracking-[-0.02em] text-[38px] sm:text-[52px] md:text-[64px] leading-[1.08]">
-          今年こそ、
+        <h2 className="mt-6 font-display text-[38px] font-extrabold leading-[1.06] tracking-[-0.04em] sm:text-[52px] md:text-[64px]">
+          参加をご希望の方は、
           <br />
-          <span className="gradient-text">AIに仕事を渡す側へ。</span>
+          <span className="gradient-text">こちらからお申し込みください。</span>
         </h2>
 
-        <p className="mt-6 max-w-xl mx-auto text-foreground/75 text-[15px] md:text-[17px] leading-[1.9]">
-          &ldquo;気になるけど手が出せない&rdquo;は、今日で卒業できます。
-          1日だけ予定を空けて、あなたの仕事道具をアップデートしませんか。
+        <p className="mx-auto mt-6 max-w-xl text-[15px] leading-[1.9] text-foreground/75 md:text-[17px]">
+          設定、基本の使い方、仕事での使いどころまでを3時間で確認します。
+          <br className="hidden md:block" />
+          フォーム送信後、3日以内に当日の詳細をご案内します。
         </p>
 
         <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[13px] text-muted">

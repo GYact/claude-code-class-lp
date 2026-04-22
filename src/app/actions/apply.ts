@@ -2,6 +2,7 @@
 
 import { Resend } from "resend";
 import * as z from "zod";
+import { EVENT } from "@/lib/event";
 
 const schema = z.object({
   name: z.string().trim().min(1, "お名前を入力してください").max(100),
@@ -131,7 +132,7 @@ async function sendEmail(p: Payload): Promise<void> {
     from,
     to,
     replyTo: p.email,
-    subject: `【申込】Claude Code教室 4/27 - ${p.name}`,
+    subject: `【申込】${EVENT.title} ${EVENT.dateShort} - ${p.name}`,
     html: renderEmailHtml(p),
     text: renderEmailText(p),
   });
@@ -146,11 +147,14 @@ async function sendSlack(p: Payload): Promise<void> {
     throw new Error("SLACK_WEBHOOK_URL is not configured");
   }
   const body = {
-    text: `:tada: Claude Code教室 4/27 新規申込: ${p.name}`,
+    text: `:tada: ${EVENT.title} ${EVENT.dateShort} 新規申込: ${p.name}`,
     blocks: [
       {
         type: "header",
-        text: { type: "plain_text", text: "🎉 新規申込: Claude Code教室 4/27" },
+        text: {
+          type: "plain_text",
+          text: `🎉 新規申込: ${EVENT.title} ${EVENT.dateShort}`,
+        },
       },
       {
         type: "section",
@@ -205,7 +209,7 @@ function renderEmailHtml(p: Payload): string {
     `<tr><td style="padding:8px 12px;background:#f6f4ef;font-weight:600;white-space:nowrap;">${escapeHtml(label)}</td><td style="padding:8px 12px;">${escapeHtml(value).replace(/\n/g, "<br>")}</td></tr>`;
   return `
     <div style="font-family:system-ui,sans-serif;color:#1a1a1a;">
-      <h2 style="margin:0 0 16px;">Claude Code教室 4/27 お申し込み</h2>
+      <h2 style="margin:0 0 16px;">${EVENT.title} ${EVENT.dateShort} お申し込み</h2>
       <table style="border-collapse:collapse;border:1px solid #e5e2db;width:100%;max-width:560px;">
         ${row("お名前", p.name)}
         ${row("メール", p.email)}
@@ -220,7 +224,7 @@ function renderEmailHtml(p: Payload): string {
 
 function renderEmailText(p: Payload): string {
   return [
-    "Claude Code教室 4/27 お申し込み",
+    `${EVENT.title} ${EVENT.dateShort} お申し込み`,
     "",
     `お名前: ${p.name}`,
     `メール: ${p.email}`,

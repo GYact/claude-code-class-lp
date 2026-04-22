@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Noto_Sans_JP, Inter } from "next/font/google";
+import { Geist_Mono, Manrope, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
+import { EVENT } from "@/lib/event";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-sans-jp",
@@ -9,10 +10,10 @@ const notoSansJP = Noto_Sans_JP({
   display: "swap",
 });
 
-const inter = Inter({
+const manrope = Manrope({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800", "900"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -24,13 +25,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://claude-code-class.example.com"),
-  title: "Claude Code はじめて教室 | 4/27 対面開催",
+  title: `${EVENT.title} | ${EVENT.dateShort} ${EVENT.timeShort}`,
   description:
-    "「気になっているけど、手が出せない」30〜40代のための Claude Code 入門講座。4/27(月)に対面で開催。基礎から実案件で使えるワークフローまで、その日のうちに体得できます。",
+    `${EVENT.dateShort} ${EVENT.timeShort} に渋谷で開催する少人数制の${EVENT.title}。設定から基本の使い方、仕事での活用イメージまで3時間で確認できます。`,
   openGraph: {
-    title: "Claude Code はじめて教室 | 4/27 対面開催",
+    title: `${EVENT.title} | ${EVENT.dateShort} ${EVENT.timeShort}`,
     description:
-      "AIに“コードを書かせる”新しい仕事術を、対面でじっくり学ぶ1日。",
+      "Claude Codeを、明日から業務で使える形に落とし込む少人数ワークショップ。",
     type: "website",
   },
 };
@@ -43,9 +44,15 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJP.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${notoSansJP.variable} ${manrope.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+        >
+          本文へスキップ
+        </a>
         {children}
       </body>
     </html>

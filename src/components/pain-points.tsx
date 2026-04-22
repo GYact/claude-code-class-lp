@@ -6,23 +6,23 @@ import { SectionHeading } from "./section-heading";
 const ITEMS = [
   {
     tag: "#01",
-    title: "ChatGPTは使っているけど、Claude Code は別物に見える",
-    body: "「ターミナル」「CLI」「環境構築」という単語で止まってしまう。便利らしいとは聞くけれど、何がどう違うのか、自分に必要なのかが分からない。",
+    title: "ChatGPT は使っているが、Claude Code はまだよく分からない",
+    body: "『ターミナル』『環境構築』と聞くと難しそうで、自分の仕事でどう使うのかが見えない。",
   },
   {
     tag: "#02",
-    title: "一人でインストールしたけど、3分で閉じた",
-    body: "英語のエラー、よく分からない設定ファイル、どんな指示をすればいいか分からない空のプロンプト——結局「また今度」になっている。",
+    title: "一度入れてみたが、設定の途中で止まった",
+    body: "英語のエラーや設定ファイルで詰まり、そのまま触らなくなっている。",
   },
   {
     tag: "#03",
-    title: "実務にどう活かせばいいか、イメージが湧かない",
-    body: "エンジニアではない自分の仕事でも使えるの？日々のExcel・議事録・資料作成に、本当にAIで差が出るの？——想像がつかない。",
+    title: "自分の仕事でどう使うのかを知りたい",
+    body: "議事録、資料作成、調査整理、Excel整形など、日々の仕事でどこまで使えるのかを具体的に見たい。",
   },
   {
     tag: "#04",
-    title: "周りが使い始めていて、置いていかれる感覚がある",
-    body: "若手や後輩が当たり前にAIを使い出している。自分だけ乗り遅れていく不安。でも、今さら誰かに聞くのも気が引ける。",
+    title: "チームで使う前に、まず自分で理解したい",
+    body: "便利さだけでなく、安全に使うための考え方や運用のしかたも把握しておきたい。",
   },
 ];
 
@@ -31,19 +31,11 @@ export function PainPoints() {
     <section id="about" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          eyebrow="WHY NOW"
-          title={
-            <>
-              &ldquo;気になっている&rdquo;まま、
-              <br className="hidden md:block" />
-              もう1年、経っていませんか。
-            </>
-          }
+          eyebrow="FOR YOU"
+          title="こんな方に向いています"
           description={
             <>
-              この教室は、そんなモヤモヤを1日で&ldquo;普段使いの道具&rdquo;に変えるための場所です。
-              <br className="hidden md:block" />
-              対面だから、つまずいたその場で聞けます。
+              難しい話を増やすより、まずは使い始められる状態を作ることを重視しています。
             </>
           }
         />
@@ -60,18 +52,18 @@ export function PainPoints() {
                 delay: i * 0.08,
                 ease: [0.2, 0.8, 0.2, 1],
               }}
-              className="group relative rounded-2xl border border-border/80 bg-surface/60 p-6 md:p-7 hover:bg-surface transition-colors overflow-hidden"
+              className="group relative overflow-hidden rounded-2xl border border-border/80 bg-surface/92 p-6 transition-colors hover:border-primary/20 hover:bg-surface md:p-7"
             >
-              <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-primary/8 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute -right-16 top-0 h-28 w-28 rounded-full bg-primary/6 blur-3xl opacity-0 transition-opacity group-hover:opacity-100" />
               <div className="relative">
-                <div className="flex items-center gap-3 text-primary font-mono text-xs tracking-widest">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
+                <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-primary">
+                  <span className="h-2 w-2 rounded-full bg-primary" />
                   {it.tag}
                 </div>
-                <h3 className="mt-3 font-display font-bold text-[19px] md:text-[21px] leading-snug tracking-[-0.01em]">
+                <h3 className="mt-3 font-display text-[19px] font-bold leading-snug tracking-[-0.02em] md:text-[21px]">
                   {it.title}
                 </h3>
-                <p className="mt-3 text-foreground/70 text-[14.5px] leading-[1.9]">
+                <p className="mt-3 text-[14.5px] leading-[1.9] text-foreground/72">
                   {it.body}
                 </p>
               </div>

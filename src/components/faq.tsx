@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import { SectionHeading } from "./section-heading";
+import { EVENT } from "@/lib/event";
 
 const ITEMS = [
   {
@@ -16,15 +17,15 @@ const ITEMS = [
   },
   {
     q: "ChatGPT / Gemini との使い分けはどうなりますか？",
-    a: "「手を動かす作業」ではClaude Codeが圧倒的に便利です。一方で「発想を広げる壁打ち」はChatGPTが得意、など用途別の使い分けも講座内で整理します。",
+    a: "使い分けの考え方も講座内で説明します。たとえば、資料のたたき台や相談はChatGPT、ファイルを見ながら進める作業はClaude Codeが向いています。",
   },
   {
     q: "Claude の有料プランへの加入は必要ですか？",
-    a: "当日は無料枠で完結できる内容を中心に進めます。ただし業務で本格利用する場合はClaude Pro以上を推奨します。プランの違い・コスト感も当日解説します。",
+    a: "当日は無料枠でも試せる内容を中心に進めます。仕事で継続的に使う場合のプラン選びや費用感もご説明します。",
   },
   {
     q: "懇親会は必ず参加ですか？",
-    a: "任意参加です。21:00で本編が終了し、そのあと希望者のみ近隣のお店で軽食をとりながら質問や情報交換をします。",
+    a: `任意参加です。本編は ${EVENT.timeShort} で終了し、そのあと希望者のみ近隣で軽く情報交換を予定しています。`,
   },
   {
     q: "キャンセルはできますか？",
@@ -48,7 +49,7 @@ export function FAQ() {
           eyebrow="FAQ"
           title="よくあるご質問"
           align="center"
-          description="お申し込み前の不安は、ここで解消してください。"
+          description="お申し込み前によくいただく質問をまとめました。"
         />
 
         <div className="mt-14 space-y-2.5">
