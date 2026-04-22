@@ -1,114 +1,140 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, MapPin, Users } from "lucide-react";
+import { ArrowRight, Calendar, Clock3, MapPin, Users } from "lucide-react";
 import { TerminalDemo } from "./terminal-demo";
+import { EVENT } from "@/lib/event";
+
+const FACTS = [
+  {
+    icon: <Calendar size={16} />,
+    label: "開催日",
+    value: EVENT.dateShort,
+  },
+  {
+    icon: <Clock3 size={16} />,
+    label: "時間",
+    value: EVENT.timeShort,
+  },
+  {
+    icon: <MapPin size={16} />,
+    label: "会場",
+    value: EVENT.venue,
+  },
+  {
+    icon: <Users size={16} />,
+    label: "定員",
+    value: EVENT.capacityShort,
+  },
+] as const;
 
 export function Hero() {
   return (
-    <section id="top" className="relative pt-28 md:pt-36 pb-20 overflow-hidden">
+    <section
+      id="top"
+      className="relative overflow-hidden border-b border-border/60 pb-20 pt-28 md:pb-24 md:pt-36"
+    >
+      <div aria-hidden className="absolute inset-0 grid-bg pointer-events-none" />
       <div
         aria-hidden
-        className="absolute inset-0 grid-bg pointer-events-none"
+        className="absolute inset-0 noise-bg opacity-[0.18] mix-blend-multiply pointer-events-none"
       />
       <div
         aria-hidden
-        className="absolute inset-0 noise-bg opacity-[0.25] mix-blend-overlay pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] glow-orange pointer-events-none"
+        className="absolute left-1/2 top-0 h-[840px] w-[840px] -translate-x-1/2 glow-orange pointer-events-none"
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 md:px-8 grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 backdrop-blur px-3.5 py-1.5 text-xs md:text-[13px] text-foreground/80"
+            className="inline-flex flex-wrap items-center gap-2 rounded-full border border-primary/10 bg-surface/90 px-4 py-2 text-[12px] text-foreground/78 shadow-[0_20px_40px_-30px_rgba(23,34,45,0.45)]"
           >
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            2026.04.27 <span className="text-muted">MON</span>
-            <span className="text-muted mx-1">/</span>
-            対面・定員15名
+            <span className="inline-block h-2 w-2 rounded-full bg-primary" />
+            {EVENT.dateDot} <span className="text-muted">{EVENT.weekdayEn}</span>
+            <span className="text-muted">/</span>
+            {EVENT.timeShort}
+            <span className="text-muted">/</span>
+            渋谷開催・少人数
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="mt-6 font-display font-black leading-[1.08] tracking-[-0.02em] text-[44px] sm:text-[56px] md:text-[68px] lg:text-[76px]"
+            className="mt-7 text-balance font-display text-[44px] font-extrabold leading-[1.02] tracking-[-0.05em] sm:text-[56px] md:text-[68px] lg:text-[74px]"
           >
-            <span className="block">&ldquo;コードを書く&rdquo;が、</span>
-            <span className="block gradient-text">変わる一日。</span>
+            Claude Codeを、
+            <br />
+            <span className="gradient-text">仕事で使うための3時間。</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-6 max-w-[560px] text-[15px] md:text-[17px] leading-[1.9] text-foreground/75"
+            className="mt-6 max-w-[620px] text-[15px] leading-[1.95] text-foreground/74 md:text-[17px]"
           >
-            ChatGPTは触った。でも
-            <span className="text-foreground">Claude Code</span>
-            は難しそうで踏み出せていない——。
+            ChatGPT は使っているけれど、
+            <span className="font-medium text-foreground"> Claude Code </span>
+            はまだよく分からない。
             <br className="hidden md:block" />
-            そんな30〜40代のビジネスパーソンのために、環境構築から
-            <span className="text-foreground">
-              &ldquo;自分の仕事で使える&rdquo;
-            </span>
-            レベルまで、対面でじっくり伴走する1Dayクラスです。
+            そんな方向けに、設定から基本の使い方までを対面で進めます。
+            議事録、資料作成、調査整理などの仕事でどう使うかも、実例を交えて確認します。
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-9 flex flex-wrap items-center gap-3"
+            className="mt-8 flex flex-wrap items-center gap-3"
           >
             <a
               href="#apply"
-              className="group inline-flex items-center gap-2 h-12 md:h-13 px-6 rounded-full bg-primary hover:bg-primary-bright text-background font-semibold transition-all hover:shadow-[0_20px_60px_-10px_rgba(224,123,82,0.6)]"
+              className="group inline-flex h-12 items-center gap-2 rounded-full bg-primary px-6 font-semibold text-white transition-all hover:bg-primary-bright hover:shadow-[0_24px_44px_-28px_rgba(24,49,77,0.58)] md:h-13"
             >
-              席を確保する
+              申し込む
               <ArrowRight
                 size={18}
                 className="transition-transform group-hover:translate-x-0.5"
               />
             </a>
             <a
-              href="#about"
-              className="inline-flex items-center gap-2 h-12 md:h-13 px-6 rounded-full border border-border hover:border-foreground/40 text-foreground/90 hover:text-foreground transition-colors"
+              href="#curriculum"
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-surface/80 px-6 text-foreground/90 transition-colors hover:border-primary/30 hover:text-foreground md:h-13"
             >
-              どんな講座？
+              当日の内容を見る
             </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-muted"
+          >
+            <span>対象: 事業開発 / 営業企画 / マーケ / PM / 管理部門</span>
+            <span>形式: 自分のPCを使って進めます</span>
           </motion.div>
 
           <motion.dl
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-10 grid grid-cols-3 gap-4 max-w-[540px]"
+            transition={{ duration: 0.8, delay: 0.45 }}
+            className="mt-10 grid max-w-[620px] grid-cols-2 gap-3 md:gap-4"
           >
-            <HeroFact
-              icon={<Calendar size={16} />}
-              label="開催日"
-              value="4/27 (月)"
-            />
-            <HeroFact
-              icon={<MapPin size={16} />}
-              label="会場"
-              value="東京・渋谷"
-            />
-            <HeroFact icon={<Users size={16} />} label="定員" value="15 名" />
+            {FACTS.map((fact) => (
+              <HeroFact key={fact.label} {...fact} />
+            ))}
           </motion.dl>
         </div>
 
         <div className="relative">
           <div
             aria-hidden
-            className="absolute -inset-6 rounded-[32px] bg-primary/10 blur-3xl"
+            className="absolute -inset-6 rounded-[36px] bg-white/55 blur-3xl"
           />
           <TerminalDemo />
         </div>
@@ -129,39 +155,37 @@ function HeroFact({
   value: string;
 }) {
   return (
-    <div className="rounded-xl border border-border/70 bg-surface/50 backdrop-blur p-3.5">
-      <div className="flex items-center gap-1.5 text-muted text-[11px]">
-        {icon}
+    <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 shadow-[0_18px_38px_-32px_rgba(23,34,45,0.45)] backdrop-blur">
+      <div className="flex items-center gap-2 text-[11px] text-muted">
+        <span className="text-primary">{icon}</span>
         <span>{label}</span>
       </div>
-      <div className="mt-1 font-semibold text-[15px]">{value}</div>
+      <div className="mt-1.5 text-[15px] font-semibold">{value}</div>
     </div>
   );
 }
 
 function LogoMarquee() {
   const items = [
-    "Anthropic Claude",
-    "macOS / Windows 対応",
-    "日本語サポート",
-    "未経験OK",
-    "少人数制",
-    "対面サポート",
-    "懇親会あり",
-    "オリジナル教材",
+    "議事録",
+    "調査整理",
+    "資料作成",
+    "メール下書き",
+    "Excel整形",
+    "設定方法",
+    "定型作業のまとめ方",
+    "安全な使い方",
   ];
   const row = [...items, ...items];
+
   return (
-    <div className="relative mt-20 mx-auto max-w-7xl px-5 md:px-8">
-      <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
-        <div className="flex gap-10 marquee w-max text-muted text-[13px] font-mono">
-          {row.map((t, i) => (
-            <span
-              key={i}
-              className="flex items-center gap-10 whitespace-nowrap"
-            >
-              <span>{t}</span>
-              <span className="text-border">◆</span>
+    <div className="relative mx-auto mt-20 max-w-7xl px-5 md:px-8">
+      <div className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        <div className="marquee flex w-max gap-10 text-[13px] text-muted">
+          {row.map((item, index) => (
+            <span key={index} className="flex items-center gap-10 whitespace-nowrap">
+              <span>{item}</span>
+              <span className="text-border">•</span>
             </span>
           ))}
         </div>

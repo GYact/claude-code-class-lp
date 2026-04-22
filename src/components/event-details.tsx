@@ -8,24 +8,30 @@ import {
   Users,
   Laptop,
   Wallet,
-  Coffee,
   CheckCircle2,
+  BriefcaseBusiness,
 } from "lucide-react";
 import { SectionHeading } from "./section-heading";
+import { EVENT } from "@/lib/event";
 
 const FACTS = [
   {
     icon: <CalendarDays size={18} />,
     label: "開催日",
-    value: "2026年 4月27日 (月)",
+    value: EVENT.dateLong,
   },
-  { icon: <Clock size={18} />, label: "時間", value: "19:00 — 21:00 (2h)" },
+  { icon: <Clock size={18} />, label: "時間", value: `${EVENT.time} (${EVENT.duration})` },
   {
     icon: <MapPin size={18} />,
     label: "会場",
-    value: "東京都渋谷区・貸会議室 (詳細はお申込後に)",
+    value: EVENT.venueDetails,
   },
-  { icon: <Users size={18} />, label: "定員", value: "15名 (少人数制)" },
+  { icon: <Users size={18} />, label: "定員", value: EVENT.capacity },
+  {
+    icon: <BriefcaseBusiness size={18} />,
+    label: "対象",
+    value: "事業開発 / 営業企画 / マーケ / PM / 管理部門",
+  },
   {
     icon: <Laptop size={18} />,
     label: "持ち物",
@@ -34,20 +40,15 @@ const FACTS = [
   {
     icon: <Wallet size={18} />,
     label: "参加費",
-    value: "¥9,900 先行割引 (通常 ¥29,800)",
-  },
-  {
-    icon: <Coffee size={18} />,
-    label: "懇親会",
-    value: "希望者のみ・別途 3,500円",
+    value: `${EVENT.price} 先行申込価格 (通常 ${EVENT.regularPrice})`,
   },
 ];
 
 const INCLUDES = [
-  "オリジナル教材 (PDF + 購入後もアップデート)",
+  "オリジナル教材 (PDF + 後日アップデート配布)",
   "当日使う実務サンプルファイル一式",
   "終了後30日間のチャットQ&Aサポート",
-  "参加者限定のコミュニティ招待",
+  "参加者限定のフォローアップ資料",
 ];
 
 export function EventDetails() {
@@ -65,14 +66,14 @@ export function EventDetails() {
           eyebrow="EVENT DETAILS"
           title={
             <>
-              小さな会場で、
+              少人数なので、
               <br className="hidden md:block" />
-              一人ずつ見届けます。
+              つまずいたところをその場で見られます。
             </>
           }
           description={
             <>
-              オンライン動画ではなく、&ldquo;その場&rdquo;で詰まりを解消することを最優先。15名限定だから、講師が全員の画面を見て回れます。
+              15名限定で、講師が全員の画面を見て回ります。オンライン動画のように置いていかれにくい形式です。
             </>
           }
         />
@@ -83,15 +84,15 @@ export function EventDetails() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
-            className="rounded-2xl border border-border/80 bg-surface/60 p-6 md:p-8"
+            className="rounded-2xl border border-border/80 bg-surface/92 p-6 shadow-[0_24px_48px_-40px_rgba(23,34,45,0.35)] md:p-8"
           >
             <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6">
               {FACTS.map((f) => (
                 <div
                   key={f.label}
-                  className="flex items-start gap-3 py-3 border-b border-border/60 last:border-0"
+                  className="flex items-start gap-3 border-b border-border/60 py-3 last:border-0"
                 >
-                  <span className="mt-0.5 inline-flex w-9 h-9 rounded-lg bg-primary/10 text-primary border border-primary/20 items-center justify-center">
+                  <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-primary/12 bg-primary/8 text-primary">
                     {f.icon}
                   </span>
                   <div>
@@ -116,18 +117,18 @@ export function EventDetails() {
               delay: 0.1,
               ease: [0.2, 0.8, 0.2, 1],
             }}
-            className="relative rounded-2xl border border-primary/30 bg-gradient-to-b from-primary/10 to-transparent p-6 md:p-8 overflow-hidden"
+            className="relative overflow-hidden rounded-2xl border border-primary/18 bg-gradient-to-b from-white/65 to-[#efe8db] p-6 md:p-8"
           >
             <div
               aria-hidden
-              className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-primary/20 blur-3xl"
+              className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
             />
             <div className="relative">
               <div className="text-primary text-[11px] tracking-[0.2em] font-mono">
                 INCLUDED
               </div>
-              <h3 className="mt-2 font-display font-bold text-[22px] tracking-[-0.01em]">
-                参加費にすべて含まれます
+              <h3 className="mt-2 font-display text-[22px] font-bold tracking-[-0.02em]">
+                参加費に含まれるもの
               </h3>
               <ul className="mt-5 space-y-3">
                 {INCLUDES.map((it) => (
@@ -149,9 +150,9 @@ export function EventDetails() {
                   <div className="text-muted text-[11px] font-mono tracking-widest">
                     PRICE
                   </div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary text-background px-2.5 py-1 text-[11px] font-bold tracking-wider">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-background/80 animate-pulse" />
-                    初回開催 67% OFF
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 text-[11px] font-bold tracking-wider text-white">
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/80" />
+                    {EVENT.earlyBirdBadge}
                   </span>
                 </div>
 
@@ -159,33 +160,28 @@ export function EventDetails() {
                   <span className="text-[13px]">通常価格</span>
                   <span className="relative font-display font-semibold text-[18px] tracking-[-0.02em]">
                     <span className="line-through decoration-[1.5px]">
-                      ¥29,800
+                      {EVENT.regularPrice}
                     </span>
                   </span>
                 </div>
 
                 <div className="mt-1 flex items-baseline gap-2.5">
                   <span className="font-display font-black text-[52px] md:text-[58px] leading-none tracking-[-0.04em] gradient-text">
-                    ¥9,900
+                    {EVENT.price}
                   </span>
                   <span className="text-muted text-[13px]">税込</span>
                 </div>
 
                 <div className="mt-3 flex items-center gap-2 text-[12.5px] text-foreground/70">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
-                  <span>
-                    <span className="text-foreground font-semibold">
-                      先着10名限定
-                    </span>
-                    の先行申込価格。定員に達し次第、通常価格に戻ります。
-                  </span>
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                  <span>{EVENT.earlyBirdNote}</span>
                 </div>
 
                 <a
                   href="#apply"
-                  className="mt-6 inline-flex w-full justify-center items-center gap-2 h-12 rounded-full bg-primary hover:bg-primary-bright text-background font-semibold transition-all hover:shadow-[0_20px_60px_-10px_rgba(224,123,82,0.6)]"
+                  className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary font-semibold text-white transition-all hover:bg-primary-bright hover:shadow-[0_20px_44px_-26px_rgba(24,49,77,0.55)]"
                 >
-                  この価格で席を確保する
+                  申し込む
                 </a>
               </div>
             </div>

@@ -23,7 +23,7 @@ export function SectionHeading({
     >
       {eyebrow && (
         <div
-          className={`inline-flex items-center gap-2 text-primary text-xs font-mono uppercase tracking-[0.18em] ${
+          className={`inline-flex items-center gap-2 text-primary text-[11px] font-mono uppercase tracking-[0.22em] ${
             align === "center" ? "justify-center" : ""
           }`}
         >
@@ -31,11 +31,11 @@ export function SectionHeading({
           {eyebrow}
         </div>
       )}
-      <h2 className="mt-3 font-display font-black tracking-[-0.02em] text-[32px] sm:text-[40px] md:text-[48px] leading-[1.12]">
+      <h2 className="mt-4 max-w-[12ch] text-balance font-display text-[32px] font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-[40px] md:text-[48px]">
         {title}
       </h2>
       {description && (
-        <p className="mt-5 text-foreground/70 text-[15px] md:text-[17px] leading-[1.9]">
+        <p className="mt-5 max-w-[62ch] text-[15px] leading-[1.9] text-foreground/72 md:text-[17px]">
           {description}
         </p>
       )}
