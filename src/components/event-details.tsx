@@ -40,7 +40,7 @@ const FACTS = [
   {
     icon: <Wallet size={18} />,
     label: "参加費",
-    value: `${EVENT.price} 先行申込価格 (通常 ${EVENT.regularPrice})`,
+    value: `${EVENT.price} 先行価格 (通常 ${EVENT.regularPrice})`,
   },
 ];
 
@@ -78,28 +78,28 @@ export function EventDetails() {
           }
         />
 
-        <div className="mt-14 grid lg:grid-cols-[1.2fr_1fr] gap-6">
+        <div className="mt-14 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
           <motion.dl
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
-            className="rounded-2xl border border-border/80 bg-surface/92 p-6 shadow-[0_24px_48px_-40px_rgba(23,34,45,0.35)] md:p-8"
+            className="navy-band rounded-[28px] border-2 border-primary/90 p-6 text-white shadow-[0_24px_48px_-40px_rgba(7,26,61,0.45)] md:p-8"
           >
             <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6">
               {FACTS.map((f) => (
                 <div
                   key={f.label}
-                  className="flex items-start gap-3 border-b border-border/60 py-3 last:border-0"
+                  className="flex items-start gap-3 border-b border-white/12 py-3 last:border-0"
                 >
-                  <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-primary/12 bg-primary/8 text-primary">
+                  <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/18 bg-white/6 text-accent">
                     {f.icon}
                   </span>
                   <div>
-                    <dt className="text-muted text-[11px] tracking-[0.2em] font-mono uppercase">
+                    <dt className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/62">
                       {f.label}
                     </dt>
-                    <dd className="mt-1 font-semibold text-[15.5px] leading-snug">
+                    <dd className="mt-1 text-[15.5px] font-semibold leading-snug text-white">
                       {f.value}
                     </dd>
                   </div>
@@ -117,41 +117,41 @@ export function EventDetails() {
               delay: 0.1,
               ease: [0.2, 0.8, 0.2, 1],
             }}
-            className="relative overflow-hidden rounded-2xl border border-primary/18 bg-gradient-to-b from-white/65 to-[#efe8db] p-6 md:p-8"
+            className="relative overflow-hidden rounded-[28px] border-2 border-accent bg-gradient-to-b from-[#fff7e7] to-[#f2e6cf] p-6 shadow-[0_24px_48px_-38px_rgba(239,199,84,0.45)] md:p-8"
           >
             <div
               aria-hidden
-              className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
+              className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/26 blur-3xl"
             />
             <div className="relative">
-              <div className="text-primary text-[11px] tracking-[0.2em] font-mono">
+              <div className="text-[11px] font-mono tracking-[0.2em] text-primary">
                 INCLUDED
               </div>
-              <h3 className="mt-2 font-display text-[22px] font-bold tracking-[-0.02em]">
+              <h3 className="mt-2 font-display text-[24px] font-black tracking-[-0.03em] text-primary">
                 参加費に含まれるもの
               </h3>
               <ul className="mt-5 space-y-3">
                 {INCLUDES.map((it) => (
                   <li
                     key={it}
-                    className="flex gap-2.5 text-[14.5px] text-foreground/85"
+                    className="flex gap-2.5 text-[14.5px] text-foreground/88"
                   >
                     <CheckCircle2
                       size={18}
-                      className="text-primary shrink-0 mt-0.5"
+                      className="mt-0.5 shrink-0 text-danger"
                     />
                     <span>{it}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-8 pt-6 border-t border-border/60">
+              <div className="mt-8 border-t-2 border-primary/10 pt-6">
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-muted text-[11px] font-mono tracking-widest">
                     PRICE
                   </div>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 text-[11px] font-bold tracking-wider text-white">
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/80" />
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
                     {EVENT.earlyBirdBadge}
                   </span>
                 </div>
@@ -166,20 +166,20 @@ export function EventDetails() {
                 </div>
 
                 <div className="mt-1 flex items-baseline gap-2.5">
-                  <span className="font-display font-black text-[52px] md:text-[58px] leading-none tracking-[-0.04em] gradient-text">
+                  <span className="font-display text-[52px] font-black leading-none tracking-[-0.04em] text-danger md:text-[58px]">
                     {EVENT.price}
                   </span>
                   <span className="text-muted text-[13px]">税込</span>
                 </div>
 
                 <div className="mt-3 flex items-center gap-2 text-[12.5px] text-foreground/70">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-strong" />
                   <span>{EVENT.earlyBirdNote}</span>
                 </div>
 
                 <a
                   href="#apply"
-                  className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary font-semibold text-white transition-all hover:bg-primary-bright hover:shadow-[0_20px_44px_-26px_rgba(24,49,77,0.55)]"
+                  className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-danger font-bold text-white transition-all hover:bg-danger-bright hover:shadow-[0_20px_44px_-26px_rgba(201,31,38,0.6)]"
                 >
                   申し込む
                 </a>

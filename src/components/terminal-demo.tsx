@@ -85,13 +85,13 @@ export function TerminalDemo() {
       initial={{ opacity: 0, y: 20, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.7, delay: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
-      className="relative overflow-hidden rounded-[28px] border border-border/80 bg-surface/92 backdrop-blur shadow-[0_28px_90px_-55px_rgba(23,34,45,0.45)]"
+      className="relative overflow-hidden rounded-[24px] border-2 border-primary bg-[#fffef9] shadow-[0_24px_60px_-40px_rgba(7,26,61,0.5)]"
     >
-      <div className="flex h-11 items-center gap-2 border-b border-border/70 bg-surface-elevated/86 px-4">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#d17f68]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ceb46a]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#5c8a69]" />
-        <span className="ml-3 font-mono text-[11px] tracking-tight text-muted">
+      <div className="navy-band flex h-12 items-center gap-2 border-b-2 border-primary/70 px-4">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#d46a56]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-accent" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#7bc07c]" />
+        <span className="ml-3 font-mono text-[11px] tracking-tight text-white/70">
           ~/workflows/sales-ops - claude code
         </span>
       </div>
@@ -134,7 +134,7 @@ function LineRenderer({
     case "user":
       return (
         <div className="mb-2">
-          <span className="text-primary">❯ </span>
+          <span className="text-danger">❯ </span>
           <span className="text-foreground">{text}</span>
           {blink && <span className="caret h-3" />}
         </div>
@@ -142,7 +142,7 @@ function LineRenderer({
     case "assistant":
       return (
         <div className="mb-1.5 text-foreground/90">
-          <span className="text-primary/90">✦ </span>
+          <span className="text-accent-strong">✦ </span>
           <span>{text}</span>
           {blink && <span className="caret h-3" />}
         </div>
@@ -150,7 +150,7 @@ function LineRenderer({
     case "tool":
       return (
         <div className="mb-1 pl-4 text-muted">
-          <span className="text-primary/75">• </span>
+          <span className="text-primary">• </span>
           <span className="text-foreground/70">{text}</span>
           {blink && <span className="caret h-3" />}
         </div>
