@@ -21,7 +21,7 @@ export function ApplyForm() {
       <div
         role="status"
         aria-live="polite"
-        className="mx-auto max-w-xl rounded-2xl border border-primary/40 bg-primary/5 p-8 text-center"
+        className="mx-auto max-w-xl rounded-[24px] border-2 border-primary/18 bg-background p-8 text-center text-primary"
       >
         <CheckCircle2 size={44} className="mx-auto text-primary" />
         <p className="mt-4 font-semibold text-lg">{state.message}</p>
@@ -40,7 +40,7 @@ export function ApplyForm() {
   return (
     <form
       action={formAction}
-      className="mx-auto max-w-xl text-left space-y-5"
+      className="mx-auto max-w-xl space-y-5 text-left text-primary"
       noValidate
     >
       <TextField
@@ -75,7 +75,7 @@ export function ApplyForm() {
           {EXPERIENCE_OPTIONS.map((o, i) => (
             <label
               key={o.value}
-              className="flex items-center gap-2 rounded-lg border border-border bg-surface px-4 py-3 cursor-pointer hover:border-primary/60 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+              className="flex cursor-pointer items-center gap-2 rounded-xl border-2 border-border bg-background px-4 py-3 transition-colors hover:border-primary/40 has-[:checked]:border-danger has-[:checked]:bg-danger/6"
             >
               <input
                 type="radio"
@@ -105,7 +105,7 @@ export function ApplyForm() {
           name="note"
           rows={4}
           maxLength={2000}
-          className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/40 resize-y"
+          className="w-full resize-y rounded-xl border-2 border-border bg-background px-4 py-3 text-sm focus:border-danger focus:outline-none focus:ring-1 focus:ring-danger/25"
         />
         {state.errors?.note?.[0] && (
           <p className="mt-1.5 text-xs text-red-400">{state.errors.note[0]}</p>
@@ -133,7 +133,7 @@ export function ApplyForm() {
         <p
           role="alert"
           aria-live="polite"
-          className="rounded-lg border border-red-500/40 bg-red-500/5 px-4 py-3 text-sm text-red-300"
+          className="rounded-xl border border-red-500/40 bg-red-500/8 px-4 py-3 text-sm text-red-600"
         >
           {state.message}
         </p>
@@ -141,7 +141,7 @@ export function ApplyForm() {
 
       <SubmitButton />
 
-      <p className="text-xs text-muted text-center leading-relaxed">
+      <p className="text-center text-xs leading-relaxed text-muted">
         送信後3日以内にご案内メールをお送りします。参加費は当日現地にて¥9,900。5日前までキャンセル無料。
       </p>
     </form>
@@ -178,7 +178,7 @@ function TextField({
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/40"
+        className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 text-sm focus:border-danger focus:outline-none focus:ring-1 focus:ring-danger/25"
       />
       {error && <p className="mt-1.5 text-xs text-red-400">{error}</p>}
     </div>
@@ -191,7 +191,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="group inline-flex w-full items-center justify-center gap-2 h-13 px-8 rounded-full bg-primary hover:bg-primary-bright disabled:opacity-60 disabled:cursor-not-allowed text-background font-semibold transition-all hover:shadow-[0_20px_60px_-10px_rgba(224,123,82,0.6)]"
+      className="group inline-flex h-13 w-full items-center justify-center gap-2 rounded-2xl bg-danger px-8 font-bold text-white transition-all hover:bg-danger-bright hover:shadow-[0_20px_46px_-20px_rgba(201,31,38,0.6)] disabled:cursor-not-allowed disabled:opacity-60"
     >
       {pending ? (
         <>
@@ -200,7 +200,7 @@ function SubmitButton() {
         </>
       ) : (
         <>
-          席を確保する
+          今すぐ申し込む
           <ArrowRight
             size={18}
             className="transition-transform group-hover:translate-x-0.5"
