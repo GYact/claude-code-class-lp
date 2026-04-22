@@ -31,17 +31,16 @@ export function CTA() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
-        className="relative mx-auto grid max-w-7xl gap-10 px-5 md:px-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start"
+        className="relative mx-auto grid max-w-7xl gap-10 px-5 md:px-8 xl:grid-cols-[0.86fr_1.14fr] xl:items-start"
       >
-        <div className="lg:pt-4">
+        <div className="xl:pt-4">
           <div className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-xs font-mono tracking-widest text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-danger" />
             {EVENT.dateDot} / {EVENT.timeShort}
           </div>
 
-          <h2 className="mt-6 font-display text-[38px] font-black leading-[1.05] tracking-[-0.05em] text-white sm:text-[54px] md:text-[62px]">
+          <h2 className="mt-6 max-w-[12ch] text-balance font-display text-[36px] font-black leading-[1.08] tracking-[-0.05em] text-white sm:text-[50px] md:max-w-[13ch] md:text-[58px]">
             お申し込みは、
-            <br />
             <span className="text-accent">こちらからお願いします。</span>
           </h2>
 
@@ -59,16 +58,14 @@ export function CTA() {
             ))}
           </ul>
 
-          <div className="mt-10 inline-flex rounded-[24px] bg-white px-6 py-4 text-primary shadow-[0_18px_40px_-28px_rgba(0,0,0,0.55)]">
-            <p className="text-[20px] font-black leading-snug">
-              定員に限りがありますので、
-              <br />
-              お早めにお申し込みください。
+          <div className="mt-10 inline-flex max-w-[30rem] rounded-[24px] bg-white px-6 py-4 text-primary shadow-[0_18px_40px_-28px_rgba(0,0,0,0.55)]">
+            <p className="max-w-[16ch] text-balance text-[18px] font-black leading-[1.45] sm:text-[20px]">
+              定員に限りがありますので、お早めにお申し込みください。
             </p>
           </div>
         </div>
 
-        <div className="rounded-[30px] border-2 border-accent bg-surface p-6 shadow-[0_28px_60px_-42px_rgba(0,0,0,0.55)] md:p-8">
+        <div className="rounded-[30px] border-2 border-accent bg-surface p-6 shadow-[0_28px_60px_-42px_rgba(0,0,0,0.55)] md:p-8 lg:p-9">
           <ApplyForm />
         </div>
       </motion.div>

@@ -7,12 +7,25 @@ export function SectionHeading({
   title,
   description,
   align = "left",
+  titleWidth,
+  descriptionWidth,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   align?: "left" | "center";
+  titleWidth?: string;
+  descriptionWidth?: string;
 }) {
+  const resolvedTitleWidth =
+    titleWidth ??
+    (align === "center"
+      ? "mx-auto max-w-[16ch] md:max-w-[18ch]"
+      : "max-w-[14ch] md:max-w-[16ch]");
+  const resolvedDescriptionWidth =
+    descriptionWidth ??
+    (align === "center" ? "mx-auto max-w-[60ch]" : "max-w-[58ch]");
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -31,11 +44,15 @@ export function SectionHeading({
           {eyebrow}
         </div>
       )}
-      <h2 className="mt-5 max-w-[12ch] text-balance font-display text-[34px] font-black leading-[1.06] tracking-[-0.04em] text-primary sm:text-[42px] md:text-[52px]">
+      <h2
+        className={`mt-5 text-balance font-display text-[32px] font-black leading-[1.08] tracking-[-0.04em] text-primary sm:text-[40px] md:text-[48px] ${resolvedTitleWidth}`}
+      >
         {title}
       </h2>
       {description && (
-        <p className="mt-5 max-w-[62ch] text-[15px] leading-[1.9] text-foreground/76 md:text-[17px]">
+        <p
+          className={`mt-5 text-[15px] leading-[1.9] text-foreground/76 md:text-[17px] ${resolvedDescriptionWidth}`}
+        >
           {description}
         </p>
       )}

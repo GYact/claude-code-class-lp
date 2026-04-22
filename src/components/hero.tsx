@@ -58,7 +58,7 @@ export function Hero() {
                 TARGET
               </div>
               <div className="text-[16px] font-black md:text-[20px]">
-                25-45歳向け
+                25-60歳向け
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.05 }}
-                className="mt-7 font-display text-[56px] font-black leading-[0.96] tracking-[-0.06em] text-primary sm:text-[72px] md:text-[88px]"
+                className="mt-7 max-w-[11ch] text-balance font-display text-[48px] font-black leading-[0.98] tracking-[-0.05em] text-primary sm:text-[62px] md:max-w-[12ch] md:text-[76px] lg:text-[82px]"
               >
                 Claude Code
               </motion.h1>
@@ -87,12 +87,12 @@ export function Hero() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="mt-5 flex flex-wrap gap-3"
+                className="mt-5 flex max-w-[560px] flex-wrap gap-3"
               >
-                <span className="border-[3px] border-primary px-5 py-2 font-display text-[46px] font-black leading-none tracking-[-0.06em] text-primary sm:text-[58px]">
+                <span className="border-[3px] border-primary px-5 py-2 font-display text-[40px] font-black leading-none tracking-[-0.05em] text-primary sm:text-[52px] md:text-[56px]">
                   入門
                 </span>
-                <span className="border-[3px] border-primary px-5 py-2 font-display text-[46px] font-black leading-none tracking-[-0.06em] text-primary sm:text-[58px]">
+                <span className="border-[3px] border-primary px-5 py-2 font-display text-[40px] font-black leading-none tracking-[-0.05em] text-primary sm:text-[52px] md:text-[56px]">
                   講座
                 </span>
               </motion.div>
@@ -101,21 +101,24 @@ export function Hero() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
-                className="navy-band mt-7 inline-flex max-w-[720px] px-5 py-4 text-[18px] font-black leading-snug text-white md:text-[24px]"
+                className="navy-band mt-7 inline-flex max-w-[560px] px-5 py-4 text-[17px] font-black leading-snug text-white md:max-w-[520px] md:text-[22px] lg:max-w-[620px]"
               >
                 AIに指示するだけで、日々の仕事が早くなる。
               </motion.div>
 
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-6 max-w-[640px] text-[15px] leading-[1.95] text-foreground/82 md:text-[17px]"
+                className="mt-6 max-w-[640px] space-y-4 text-[15px] leading-[1.95] text-foreground/82 md:text-[17px]"
               >
-                ChatGPT は使っているけれど、Claude Code はまだよく分からない。
-                そんな方向けに、設定から基本の使い方までを対面で進めます。
-                仕事でどう使うかも、実例を見ながら確認します。
-              </motion.p>
+                <p className="text-balance">
+                  ChatGPT は使っているけれど、Claude Code はまだよく分からない。
+                </p>
+                <p className="text-balance">
+                  そんな方向けに、設定から基本の使い方までを対面で進めます。仕事でどう使うかも、実例を見ながら確認します。
+                </p>
+              </motion.div>
 
               <motion.ul
                 initial={{ opacity: 0, y: 18 }}
@@ -160,18 +163,20 @@ export function Hero() {
                   詳細を見る
                 </a>
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.32 }}
+                className="mt-6 lg:hidden"
+              >
+                <Badge compact />
+              </motion.div>
             </div>
 
             <div className="relative">
-              <div className="absolute right-0 top-0 z-10 rounded-full bg-accent px-6 py-8 text-center text-primary shadow-[0_20px_40px_-18px_rgba(239,199,84,0.85)]">
-                <div className="flex justify-center">
-                  <Users size={26} />
-                </div>
-                <div className="mt-2 text-[15px] font-black leading-snug">
-                  少人数制で
-                  <br />
-                  しっかり学べる
-                </div>
+              <div className="absolute right-0 top-0 z-10 hidden translate-x-2 -translate-y-4 lg:block">
+                <Badge />
               </div>
 
               <motion.div
@@ -185,9 +190,13 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="navy-band grid gap-px border-t-2 border-primary/80 md:grid-cols-3">
-            {FACTS.map((fact) => (
-              <HeroFact key={fact.label} {...fact} />
+          <div className="navy-band grid gap-px border-t-2 border-primary/80 sm:grid-cols-2 lg:grid-cols-3">
+            {FACTS.map((fact, index) => (
+              <HeroFact
+                key={fact.label}
+                className={index === FACTS.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""}
+                {...fact}
+              />
             ))}
           </div>
         </div>
@@ -202,21 +211,46 @@ function HeroFact({
   icon,
   label,
   value,
+  className,
 }: {
   icon: React.ReactNode;
   label: string;
   value: string;
+  className?: string;
 }) {
   return (
-    <div className="flex items-start gap-4 bg-primary px-6 py-5 text-white md:min-h-[112px]">
+    <div
+      className={`flex items-start gap-4 bg-primary px-6 py-5 text-white md:min-h-[112px] ${className ?? ""}`}
+    >
       <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/25 bg-white/6 text-accent">
         {icon}
       </span>
       <div>
         <div className="text-[14px] font-bold text-white/78">{label}</div>
-        <div className="mt-1 text-[19px] font-black leading-snug md:text-[24px]">
+        <div className="mt-1 max-w-[18ch] text-[19px] font-black leading-snug md:max-w-none md:text-[24px]">
           {value}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function Badge({ compact = false }: { compact?: boolean }) {
+  return (
+    <div
+      className={`rounded-full bg-accent text-center text-primary shadow-[0_20px_40px_-18px_rgba(239,199,84,0.85)] ${
+        compact ? "inline-flex items-center gap-3 px-5 py-3" : "px-6 py-8"
+      }`}
+    >
+      <div className="flex justify-center">
+        <Users size={compact ? 22 : 26} />
+      </div>
+      <div
+        className={`font-black leading-snug ${compact ? "text-[14px]" : "mt-2 text-[15px]"}`}
+      >
+        少人数制で
+        <br />
+        しっかり学べる
       </div>
     </div>
   );
