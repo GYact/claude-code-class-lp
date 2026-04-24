@@ -23,16 +23,41 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const ogTitle = `${EVENT.title} | ${EVENT.dateLong} ${EVENT.time} @${EVENT.venue}`;
+const ogDescription = `${EVENT.dateLong} ${EVENT.time} / ${EVENT.venue}で開催する${EVENT.capacity}の${EVENT.title}。設定から基本操作、非エンジニア業務での使いどころまで${EVENT.duration}で持ち帰れます。先行価格 ${EVENT.price}（通常 ${EVENT.regularPrice}）。`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://claude-code-class.example.com"),
-  title: `${EVENT.title} | ${EVENT.dateShort} ${EVENT.timeShort}`,
-  description:
-    `${EVENT.dateShort} ${EVENT.timeShort} に渋谷で開催する少人数制の${EVENT.title}。設定から基本の使い方、仕事での活用イメージまで3時間で確認できます。`,
+  metadataBase: new URL("https://claude-code-class-lp.vercel.app"),
+  title: ogTitle,
+  description: ogDescription,
+  keywords: [
+    "Claude Code",
+    "Claude Code 入門",
+    "Claude Code 講座",
+    "AI 活用 講座",
+    "生成AI ワークショップ",
+    "渋谷 勉強会",
+    EVENT.dateShort,
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: `${EVENT.title} | ${EVENT.dateShort} ${EVENT.timeShort}`,
-    description:
-      "Claude Codeを、明日から業務で使える形に落とし込む少人数ワークショップ。",
+    title: ogTitle,
+    description: ogDescription,
+    url: "/",
+    siteName: EVENT.shortTitle,
+    locale: "ja_JP",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: ogTitle,
+    description: ogDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
